@@ -14,6 +14,12 @@ npx skills add Linkzly/skills
 
 The installer asks which of your agents to install for.
 
+The full address of the repository works the same way:
+
+```
+npx skills add https://github.com/Linkzly/skills
+```
+
 ### Claude Code
 
 ```
@@ -58,7 +64,13 @@ Agents that take no skills can read the docs directly: <https://docs.linkzly.com
 
 ### By hand
 
-Copy the folder `skills/linkzly-mobile-sdk` into your agent's skills folder (for Claude Code, `~/.claude/skills/`).
+Clone the repository:
+
+```
+git clone https://github.com/Linkzly/skills.git
+```
+
+Then copy its folder `skills/linkzly-mobile-sdk` into your agent's skills folder (for Claude Code, `~/.claude/skills/`).
 
 ## Use
 
