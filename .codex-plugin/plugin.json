@@ -1,0 +1,31 @@
+{
+  "name": "linkzly",
+  "version": "1.0.0",
+  "description": "Integrate the Linkzly mobile SDKs (iOS, Android, React Native, Flutter) correctly: install, events, purchases, deep links, push and attribution.",
+  "author": {
+    "name": "Linkzly",
+    "url": "https://linkzly.com"
+  },
+  "homepage": "https://docs.linkzly.com/docs/sdk-ai-agents",
+  "repository": "https://github.com/Linkzly/skills",
+  "license": "MIT",
+  "keywords": ["linkzly", "mobile-sdk", "ios", "android", "react-native", "flutter", "attribution", "deep-links"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Linkzly",
+    "shortDescription": "Linkzly mobile SDK integration",
+    "longDescription": "Add the Linkzly SDK to an iOS, Android, React Native or Flutter app: install and configuration, custom events, purchases and refunds, deep links, push tokens, affiliate attribution and privacy controls, with rules for the SDK behaviours that are easy to get wrong.",
+    "developerName": "Linkzly",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Write"],
+    "websiteURL": "https://linkzly.com",
+    "privacyPolicyURL": "https://linkzly.com/privacy",
+    "termsOfServiceURL": "https://linkzly.com/terms",
+    "defaultPrompt": [
+      "Add the Linkzly SDK to this app and track a sign-up event",
+      "Track purchases and refunds in this app with the Linkzly SDK",
+      "My Linkzly events are not showing up; find out why"
+    ],
+    "screenshots": []
+  }
+}

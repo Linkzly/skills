@@ -1,0 +1,48 @@
+{
+  "name": "@linkzly/skills",
+  "version": "1.0.0",
+  "description": "Agent Skills for integrating the Linkzly mobile SDKs (iOS, Android, React Native, Flutter) with an AI coding agent.",
+  "license": "MIT",
+  "author": {
+    "name": "Linkzly",
+    "url": "https://linkzly.com"
+  },
+  "homepage": "https://docs.linkzly.com/docs/sdk-ai-agents",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linkzly/skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Linkzly/skills/issues"
+  },
+  "keywords": [
+    "linkzly",
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "cursor",
+    "github-copilot",
+    "antigravity",
+    "mobile-sdk",
+    "ios",
+    "android",
+    "react-native",
+    "flutter"
+  ],
+  "bin": {
+    "linkzly-skills": "bin/install.mjs"
+  },
+  "files": [
+    "skills",
+    ".claude-plugin",
+    ".codex-plugin",
+    ".cursor-plugin",
+    ".agents",
+    "rules",
+    "plugin.json",
+    "bin"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

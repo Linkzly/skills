@@ -1,0 +1,13 @@
+{
+  "name": "linkzly",
+  "description": "Integrate the Linkzly mobile SDKs (iOS, Android, React Native, Flutter) correctly: install, events, purchases, deep links, push and attribution.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Linkzly",
+    "url": "https://linkzly.com"
+  },
+  "homepage": "https://docs.linkzly.com/docs/sdk-ai-agents",
+  "repository": "https://github.com/Linkzly/skills",
+  "license": "MIT",
+  "keywords": ["linkzly", "mobile-sdk", "ios", "android", "react-native", "flutter", "attribution", "deep-links"]
+}

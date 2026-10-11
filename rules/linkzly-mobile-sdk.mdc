@@ -1,0 +1,14 @@
+---
+description: Use when adding, updating or debugging the Linkzly SDK in an iOS, Android, React Native or Flutter app.
+alwaysApply: false
+---
+
+# Linkzly mobile SDK
+
+Follow the [linkzly-mobile-sdk](../skills/linkzly-mobile-sdk/SKILL.md) skill for every step. It holds the order of work and a reference file for each section of the Linkzly docs, cut to your platform.
+
+Three rules hold even if you read nothing else:
+
+- Never make up an SDK key. Ask the person for it.
+- `configure()` already sends the install and the opens. Do not add `trackInstall` or `trackOpen`.
+- Every custom event name has to be registered for the app in the Linkzly console, or the event is dropped while the call succeeds.

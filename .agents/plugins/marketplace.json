@@ -1,0 +1,20 @@
+{
+  "name": "linkzly",
+  "interface": {
+    "displayName": "Linkzly"
+  },
+  "plugins": [
+    {
+      "name": "linkzly",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Linkzly/skills.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
