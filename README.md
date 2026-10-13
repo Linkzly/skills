@@ -72,6 +72,37 @@ git clone https://github.com/Linkzly/skills.git
 
 Then copy its folder `skills/linkzly-mobile-sdk` into your agent's skills folder (for Claude Code, `~/.claude/skills/`).
 
+## Update
+
+The skill does not update itself, unless your agent updates plugins for you. Update it after you update the Linkzly SDK in your app, and whenever a new version is published here.
+
+### Installed with `npx skills add`
+
+```
+npx skills update
+```
+
+For a project install, run it in the project folder. It asks whether to update the project's skills or your global ones; `-p` or `-g` answers that up front. Running your `npx skills add` command again does the same job.
+
+### Claude Code plugin
+
+In a session, run `/plugin`, open the **Marketplaces** tab, select `linkzly` and choose **Update marketplace**. Or run these in your shell:
+
+```
+claude plugin marketplace update linkzly
+claude plugin update linkzly@linkzly
+```
+
+Then run `/reload-plugins`, or start a new session. To get later versions without these steps, choose **Enable auto-update** for `linkzly` on the same tab.
+
+### Any other plugin install
+
+Update the plugin in your agent, or remove it and install it again with the steps under [Install](#install).
+
+### By hand
+
+Run `git pull` in your clone and copy `skills/linkzly-mobile-sdk` into your agent's skills folder again.
+
 ## Use
 
 Open your app's project with your agent and ask, for example:

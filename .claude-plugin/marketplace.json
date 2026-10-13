@@ -14,7 +14,7 @@
       "name": "linkzly",
       "source": "./",
       "description": "Integrate the Linkzly mobile SDKs (iOS, Android, React Native, Flutter) correctly: install, events, purchases, deep links, push and attribution.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Linkzly",
         "url": "https://linkzly.com"
