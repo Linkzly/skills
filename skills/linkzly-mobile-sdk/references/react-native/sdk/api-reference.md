@@ -63,7 +63,7 @@ Platform column: `iOS + Android` means the call reaches both native SDKs.
 
 | Method | Platforms | What it does |
 |---|---|---|
-| `requestTrackingPermission` | iOS only | Shows the ATT prompt; resolves to the status string (`'unsupported'` on Android). |
+| `requestTrackingPermission` | iOS only | Shows the ATT prompt; resolves to the status string (`'unsupported'` on Android). Rejects with `UNSUPPORTED_IOS` before iOS 14.5. |
 | `getATTStatus` | iOS only | Returns the ATT status, or `null` on Android. |
 | `getIDFA` | iOS only | Returns the IDFA, or `null` (also `null` on Android). |
 | `setAdvertisingTrackingEnabled` | iOS + Android | Turns advertising-ID collection on or off. |

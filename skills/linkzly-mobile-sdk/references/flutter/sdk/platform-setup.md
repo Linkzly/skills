@@ -24,6 +24,8 @@ Add to `ios/Runner/Info.plist`:
 </array>
 ```
 
+Replace the example `NSUserTrackingUsageDescription` text with your own. The permission prompt shows it to the person, so keep it short and specific; iOS adds your app's name itself.
+
 If you call `updateConversionValue(...)` for SKAdNetwork, also add `SKAdNetworkItems` with the ad-network identifiers your app uses.
 
 ### iOS — Associated Domains entitlement (Universal Links)

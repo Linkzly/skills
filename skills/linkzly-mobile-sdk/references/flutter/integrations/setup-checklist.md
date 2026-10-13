@@ -46,7 +46,7 @@ Each list runs in the order you do the work: console, app project, code, then ho
 ### SKAdNetwork and App Tracking Transparency checklist
 
 - [ ] `NSUserTrackingUsageDescription` is in `Info.plist` (iOS).
-- [ ] `requestTrackingPermission` runs at a suitable moment.
+- [ ] `requestTrackingPermission` runs while the app is active, and the prompt appears on a new install.
 - [ ] `updateConversionValue` runs with the values you chose.
 - [ ] The conversion value call reports success on a real iOS device.
 

@@ -39,6 +39,8 @@ cd ios && pod install && cd ..
 
 Without this line, `pod install` fails with `Unable to find a specification for 'LinkzlySDK'`.
 
+In an Expo app that generates its native folders, `ios/Podfile` is generated too, so the line goes in through a config plugin. See [Expo](../sdk/platform-setup.md).
+
 ### Android
 
 The package's own `android/build.gradle` already declares the JitPack repository and depends on the native Android SDK (`com.github.Linkzly:linkzly-android-sdk:1.0.9`), so a default React Native project builds without any change to your Gradle files.

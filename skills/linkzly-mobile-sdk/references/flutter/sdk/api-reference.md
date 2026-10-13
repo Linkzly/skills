@@ -60,7 +60,7 @@ Every method is called as `Linkzly.instance.<method>(...)`. Methods that exist f
 
 | Method | Platforms | What it does |
 |---|---|---|
-| `requestTrackingPermission` | iOS only | Shows the ATT prompt; returns the status string |
+| `requestTrackingPermission` | iOS only | Shows the ATT prompt; returns the status string (`null` before iOS 14.5) |
 | `getAttStatus` | iOS only | Returns the current ATT status |
 | `getIdfa` | iOS only | Returns the IDFA when ATT allows it |
 | `updateConversionValue` | iOS only | Sends a SKAdNetwork conversion value (0-63) |

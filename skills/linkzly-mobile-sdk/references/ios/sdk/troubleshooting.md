@@ -7,7 +7,7 @@ Source: https://docs.linkzly.com/docs/sdk-ios#troubleshooting
 
 **Universal Links don't open the app.** Verify the AASA file is served over HTTPS without redirects at `/.well-known/apple-app-site-association`, the `appID` matches your Team ID and Bundle ID, and the Associated Domains capability lists `applinks:yourdomain.com`. Hosted Verification skips the file step.
 
-**IDFA always nil.** Confirm `NSUserTrackingUsageDescription` is set in `Info.plist`, you called `LinkzlySDK.requestTrackingPermission`, and the user authorized tracking.
+**IDFA always nil.** Confirm `NSUserTrackingUsageDescription` is set in `Info.plist`, you called `LinkzlySDK.requestTrackingPermission`, and the user authorized tracking. If no prompt appeared, the call ran before the app was active (see [SKAdNetwork and ATT](../sdk/skadnetwork-and-att.md)). `getIDFA()` also returns `nil` after `setAdvertisingTrackingEnabled(false)`.
 
 **`initializePush()` returns false.** This is expected before the first successful `setNotificationToken` registration, because there is no topic yet. Otherwise check that the SDK is configured, that Firebase is set up (`FirebaseApp.configure()`) before the token is registered, and that APNs entitlements are set.
 

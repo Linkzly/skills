@@ -13,8 +13,11 @@ Nothing is needed for the SDK calls. The console's SKAN report (the SKAN tab of 
 
 ### Set up in your app project
 
-- Add the `NSUserTrackingUsageDescription` key to `Info.plist` with the text the permission prompt shows. See [Info.plist](https://docs.linkzly.com/docs/sdk-ios#infoplist).
-- Call `requestTrackingPermission` at a moment that makes sense to the person, and decide your conversion values in your own code.
+- iOS: add the `NSUserTrackingUsageDescription` key to `Info.plist` with your own text for the permission prompt, before the first `requestTrackingPermission` call. The app crashes if the call runs without the key. See [Info.plist](https://docs.linkzly.com/docs/sdk-ios#infoplist).
+- iOS: call `requestTrackingPermission` while the app is active, at a moment that makes sense to the person. iOS shows the prompt only while the app is active: called earlier, while the app is still starting, no prompt appears and the call returns the current status, which is `notDetermined` on a new install.
+- iOS: the SDK does not wait for the answer. `configure` sends the install event on the first launch, so that event has no advertising ID unless the person had already allowed tracking when `configure` ran. Events sent after the person allows tracking carry it.
+- iOS: decide your conversion values in your own code.
+- Android: nothing to add. The Android SDK has no tracking-permission call, and the advertising ID permission comes in with the SDK's dependencies (see [Prerequisites](https://docs.linkzly.com/docs/sdk-android#prerequisites)).
 
 ### SDK calls
 

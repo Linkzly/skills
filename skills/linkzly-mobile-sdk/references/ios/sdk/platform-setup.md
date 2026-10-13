@@ -40,3 +40,5 @@ Add a custom URL scheme (helpful for testing) and a tracking-permission descript
 <key>NSUserTrackingUsageDescription</key>
 <string>We use your data to provide personalized content and improve your app experience.</string>
 ```
+
+Replace the example text with your own. The permission prompt shows it to the person, so keep it short and specific; iOS adds your app's name itself. The key has to be in `Info.plist` before the first `requestTrackingPermission` call: the app crashes if the call runs without it.
