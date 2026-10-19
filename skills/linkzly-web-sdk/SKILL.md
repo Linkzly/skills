@@ -76,6 +76,7 @@ End with one message that lists:
 
 - the files you changed;
 - what you built or ran, and the result;
+- which Linkzly environment the code sends to, production or staging. For staging, say what changes before the site goes live: the production environment, a key from the production console, and the custom event names registered in that console;
 - what you still need from the person. If the placeholder is still in the code, ask for the SDK key in plain words and name the file that holds the placeholder;
 - what you assumed, if you went on without an answer;
 - what is left for the person to do, each item with the console screen as the reference file names it: the app to register with Web as a target platform and the site's address as its Fallback URL, each custom event name to register (the built-in events need none), that Revenue & LTV has to be enabled for their organisation if purchases are tracked (they ask Linkzly support), and, if you set `autoTrackFirstVisit: false`, that it can be turned back on in a later release.

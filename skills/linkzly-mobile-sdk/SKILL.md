@@ -74,6 +74,7 @@ End with one message that lists:
 
 - the files you changed;
 - what you built or ran, and the result;
+- which Linkzly environment the code sends to, production or staging. For staging, say what changes before the app is released: the production environment, a key from the production console, and the custom event names registered in that console;
 - what you still need from the person. If the placeholder is still in the code, ask for the SDK key in plain words and name the file that holds the placeholder;
 - what is left for the person to do, each item with the console screen as the reference file names it: the app to register, each custom event name to register, the Firebase (FCM) push provider to add, that Revenue & LTV has to be enabled for their organisation if purchases are tracked (they ask Linkzly support), and every other console step of the integrations you set up.
 
