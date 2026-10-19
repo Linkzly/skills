@@ -1,9 +1,9 @@
 {
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "linkzly",
-  "description": "Official Linkzly skills for integrating the Linkzly mobile SDKs with an AI coding agent.",
+  "description": "Official Linkzly skills for integrating the Linkzly mobile and web SDKs with an AI coding agent.",
   "metadata": {
-    "description": "Official Linkzly skills for integrating the Linkzly mobile SDKs with an AI coding agent."
+    "description": "Official Linkzly skills for integrating the Linkzly mobile and web SDKs with an AI coding agent."
   },
   "owner": {
     "name": "Linkzly",
@@ -13,8 +13,8 @@
     {
       "name": "linkzly",
       "source": "./",
-      "description": "Integrate the Linkzly mobile SDKs (iOS, Android, React Native, Flutter) correctly: install, events, purchases, deep links, push and attribution.",
-      "version": "1.1.0",
+      "description": "Integrate the Linkzly SDKs correctly in mobile apps (iOS, Android, React Native, Flutter) and websites (JavaScript): install, events, purchases, deep links and smart links, push and attribution.",
+      "version": "1.2.0",
       "author": {
         "name": "Linkzly",
         "url": "https://linkzly.com"
@@ -22,7 +22,7 @@
       "homepage": "https://docs.linkzly.com/docs/sdk-ai-agents",
       "repository": "https://github.com/Linkzly/skills",
       "license": "MIT",
-      "keywords": ["linkzly", "mobile-sdk", "ios", "android", "react-native", "flutter"]
+      "keywords": ["linkzly", "mobile-sdk", "ios", "android", "react-native", "flutter", "web", "javascript", "web-sdk"]
     }
   ]
 }

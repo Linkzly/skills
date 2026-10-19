@@ -1,7 +1,7 @@
 {
   "name": "@linkzly/skills",
-  "version": "1.1.0",
-  "description": "Agent Skills for integrating the Linkzly mobile SDKs (iOS, Android, React Native, Flutter) with an AI coding agent.",
+  "version": "1.2.0",
+  "description": "Agent Skills for integrating the Linkzly SDKs (iOS, Android, React Native, Flutter and Web) with an AI coding agent.",
   "license": "MIT",
   "author": {
     "name": "Linkzly",
@@ -27,7 +27,10 @@
     "ios",
     "android",
     "react-native",
-    "flutter"
+    "flutter",
+    "web",
+    "javascript",
+    "web-sdk"
   ],
   "bin": {
     "linkzly-skills": "bin/install.mjs"
