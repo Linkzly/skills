@@ -1,0 +1,14 @@
+---
+description: Use when adding, updating or debugging the Linkzly Web SDK on a website or web app.
+alwaysApply: false
+---
+
+# Linkzly Web SDK
+
+Follow the [linkzly-web-sdk](../skills/linkzly-web-sdk/SKILL.md) skill for every step. It holds the order of work and a reference file for each section of the Linkzly Web SDK docs.
+
+Three rules hold even if you read nothing else:
+
+- Never make up an SDK key. Ask the person for it.
+- Call `configure` once per page load, in the browser. It sends the install, open and session-end events itself, so do not call `trackFirstVisit` or `trackOpen`.
+- Every custom event name has to be registered for the app in the Linkzly console, or the event is dropped while the call succeeds. `page_view`, `time_on_page`, `scroll_depth` and `outbound_click` are built in and need no registration.

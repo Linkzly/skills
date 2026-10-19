@@ -1,8 +1,8 @@
 # Linkzly Skills
 
-An [Agent Skill](https://agentskills.io) that lets your AI coding agent add a Linkzly mobile SDK to your app: iOS, Android, React Native and Flutter.
+Two [Agent Skills](https://agentskills.io) that let your AI coding agent add the Linkzly SDK to your project: linkzly-mobile-sdk for iOS, Android, React Native and Flutter apps, and linkzly-web-sdk for websites and web apps.
 
-The skill carries the same instructions as [docs.linkzly.com](https://docs.linkzly.com), cut to your platform, and rules for the SDK behaviours that are easy to get wrong. It covers install and configuration, custom events, purchases and refunds, deep links and deferred deep links, push tokens, affiliate attribution, SKAdNetwork and tracking permission, and privacy controls.
+Each skill carries the same instructions as [docs.linkzly.com](https://docs.linkzly.com), cut to your platform, and rules for the SDK behaviours that are easy to get wrong. Both cover install and configuration, custom events, purchases and refunds, and privacy controls. The mobile skill also covers deep links and deferred deep links, push tokens, affiliate attribution, SKAdNetwork and tracking permission; the web skill also covers page views, smart link and UTM attribution, and consent.
 
 ## Install
 
@@ -19,6 +19,14 @@ The full address of the repository works the same way:
 ```
 npx skills add https://github.com/Linkzly/skills
 ```
+
+The repository holds both skills, and your agent uses the one that fits your project. To install one only, name it:
+
+```
+npx skills add Linkzly/skills --skill linkzly-web-sdk
+```
+
+For a mobile app, use `--skill linkzly-mobile-sdk`.
 
 ### Claude Code
 
@@ -70,7 +78,7 @@ Clone the repository:
 git clone https://github.com/Linkzly/skills.git
 ```
 
-Then copy its folder `skills/linkzly-mobile-sdk` into your agent's skills folder (for Claude Code, `~/.claude/skills/`).
+Then copy the folder of each skill you use, `skills/linkzly-mobile-sdk` or `skills/linkzly-web-sdk`, into your agent's skills folder (for Claude Code, `~/.claude/skills/`).
 
 ## Update
 
@@ -82,7 +90,9 @@ The skill does not update itself, unless your agent updates plugins for you. Upd
 npx skills update
 ```
 
-For a project install, run it in the project folder. It asks whether to update the project's skills or your global ones; `-p` or `-g` answers that up front. Running your `npx skills add` command again does the same job.
+For a project install, run it in the project folder. It asks whether to update the project's skills or your global ones; `-p` or `-g` answers that up front. Running your `npx skills add` command again does the same job; a command without `--skill` now installs both skills.
+
+To add the web skill to an install that has only the mobile one, run the one-skill command above.
 
 ### Claude Code plugin
 
@@ -101,7 +111,7 @@ Update the plugin in your agent, or remove it and install it again with the step
 
 ### By hand
 
-Run `git pull` in your clone and copy `skills/linkzly-mobile-sdk` into your agent's skills folder again.
+Run `git pull` in your clone and copy the folder of each skill you use, `skills/linkzly-mobile-sdk` or `skills/linkzly-web-sdk`, into your agent's skills folder again.
 
 ## Use
 
@@ -111,6 +121,7 @@ Open your app's project with your agent and ask, for example:
 - "Track a `signup_completed` event when sign-up finishes."
 - "Track purchases and refunds with Linkzly."
 - "Set up Linkzly push notifications."
+- "Add the Linkzly Web SDK to this site and track a purchase on the order confirmation page."
 
 The agent will ask you for your SDK key and for anything else only you can supply. It never makes up a key. At the end it lists what is left for you to do in the Linkzly console, such as registering the event names it used.
 
@@ -120,7 +131,7 @@ It changes your app's code and project files. It does not sign in to the Linkzly
 
 ## How this repository is maintained
 
-Everything under `skills/linkzly-mobile-sdk/references/` is generated from the pages on docs.linkzly.com. Please do not send changes to those files. If something there is wrong, the docs page is wrong too: open an issue here and it will be fixed at the source.
+Everything in the `references/` folder of each skill is generated from the pages on docs.linkzly.com. Please do not send changes to those files. If something there is wrong, the docs page is wrong too: open an issue here and it will be fixed at the source.
 
 ## Licence
 

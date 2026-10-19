@@ -1,6 +1,6 @@
 ---
 name: linkzly-mobile-sdk
-description: Use when adding, updating or debugging the Linkzly SDK in an iOS, Android, React Native or Flutter app - installing or configuring it, tracking events, purchases or refunds, handling deep links or deferred deep links, registering push tokens, affiliate attribution, SKAdNetwork or tracking permission, privacy controls - or when a mobile app's Linkzly events, purchases or pushes are not showing up. Not for the Linkzly REST API, the web SDK, or creating links and QR codes.
+description: Use when adding, updating or debugging the Linkzly SDK in an iOS, Android, React Native or Flutter app - installing or configuring it, tracking events, purchases or refunds, handling deep links or deferred deep links, registering push tokens, affiliate attribution, SKAdNetwork or tracking permission, privacy controls - or when a mobile app's Linkzly events, purchases or pushes are not showing up. Not for websites or web apps (use linkzly-web-sdk), the Linkzly REST API, or creating links and QR codes.
 ---
 
 # Linkzly mobile SDK
@@ -36,6 +36,8 @@ Find the app's root folder, check it against these rows in order, and stop at th
 | a Gradle module that applies `com.android.application` | `android` |
 
 The `ios/` and `android/` folders inside a React Native or Flutter app are part of that app, not apps of their own. Its reference files cover the native setup it needs.
+
+A website or web app is not covered here: a project with HTML pages or a web framework such as Next.js, React or Vue, and no `react-native`, `expo` or Flutter dependency. Use the `linkzly-web-sdk` skill for it. A request for the web build of a React Native, Expo or Flutter app comes to this skill, but neither SDK's docs cover that build: tell the person, ask how they want it handled, and wait for their answer before changing anything.
 
 This step is done when you can name one app and its platform folder. If the project holds more than one app (an iOS project and an Android project side by side are two apps) and the person has not said which, or nothing in it matches the table, stop here: tell the person what you found and ask which app to work on. That question is your whole reply, whatever else they asked: the SDK, its install line and its setup differ for each platform, so the rest waits for their answer.
 
