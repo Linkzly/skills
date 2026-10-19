@@ -1,6 +1,6 @@
 {
   "name": "@linkzly/skills",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Agent Skills for integrating the Linkzly SDKs (iOS, Android, React Native, Flutter and Web) with an AI coding agent.",
   "license": "MIT",
   "author": {

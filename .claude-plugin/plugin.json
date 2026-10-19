@@ -1,7 +1,7 @@
 {
   "name": "linkzly",
   "description": "Integrate the Linkzly SDKs correctly in mobile apps (iOS, Android, React Native, Flutter) and websites (JavaScript): install, events, purchases, deep links and smart links, push and attribution.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": {
     "name": "Linkzly",
     "url": "https://linkzly.com"
