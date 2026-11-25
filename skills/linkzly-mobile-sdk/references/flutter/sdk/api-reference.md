@@ -63,7 +63,7 @@ Every method is called as `Linkzly.instance.<method>(...)`. Methods that exist f
 | `requestTrackingPermission` | iOS only | Shows the ATT prompt; returns the status string (`null` before iOS 14.5) |
 | `getAttStatus` | iOS only | Returns the current ATT status |
 | `getIdfa` | iOS only | Returns the IDFA when ATT allows it |
-| `updateConversionValue` | iOS only | Sends a SKAdNetwork conversion value (0-63) |
+| `updateConversionValue` | iOS only | Sends a SKAdNetwork conversion value (0-63). Optional named `coarseValue` (`'low'`, `'medium'` or `'high'`, iOS 16.1 and later) and `lockWindow` (needs a valid `coarseValue`) |
 | `setAdvertisingTrackingEnabled` | iOS, Android | Turns advertising identifier use on or off |
 | `isAdvertisingTrackingEnabled` | iOS, Android | Whether advertising identifier use is on |
 
@@ -77,6 +77,7 @@ Every method is called as `Linkzly.instance.<method>(...)`. Methods that exist f
 | `clearNotificationToken` | iOS, Android | Clears the token and revokes it server-side (durable opt-out) |
 | `initializePush` | iOS, Android | Re-subscribes to the broadcast topic (recovery call) |
 | `disablePush` | iOS, Android | Unsubscribes for the session only |
+| `trackNotificationOpen` | iOS, Android | Reports a tap on a Linkzly notification from its data and an optional `actionId`. Never throws |
 
 ### Privacy
 

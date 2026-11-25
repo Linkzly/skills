@@ -12,7 +12,15 @@ Under the default strategy, install, open and purchase events are sent immediate
 | Flush interval | 30 seconds |
 | Queue size | 1,000 events; the oldest is dropped when full |
 
-A flush starts when the queue reaches the batch size, when the timer fires, when the app goes to the background, when the network becomes reachable again, or when your code calls `flushEvents`. The queue is saved on the device, so queued events survive an app restart. A failed send leaves the events in the queue for the next flush.
+A flush starts when the queue reaches the batch size, when the timer fires, when the app goes to the background, when the network becomes reachable again, or when your code calls `flushEvents`. The queue is saved on the device, so queued events survive an app restart.
+
+When a batch fails to send, the SDK versions in [SDK versions](../events/event-properties.md) handle it this way:
+
+- A batch Linkzly refuses, for example one that is too large, is dropped at once.
+- A batch that gets a server error, or no answer while the device is online, stays in the queue and is tried again at later flushes, up to 5 attempts in all. Then it is dropped.
+- While the device is offline, failed attempts don't count, and the events wait in the queue.
+
+Older versions differ: iOS retried a batch that got a server error or no answer with no limit, and Android dropped a batch after any failure, offline included.
 
 Call `flushEvents` yourself only when you need events sent at a known moment, for example before a screen you know will close the app. `getPendingEventCount` returns how many events are still waiting.
 

@@ -54,6 +54,7 @@ For revenue events use `trackPurchase` and `trackRefund`. The contract:
 - `transactionId` is the deduplication key: a repeat of the same id is discarded.
 - `revenueType` is `"iap"`, `"subscription"` or `"other"`.
 - The SDK also accepts `productId`, `productName` and `quantity`. Key names in `snake_case` (`transaction_id`, `product_id`, `revenue_type`) are accepted as well.
+- `environment` is `"production"` or `"sandbox"`. The SDK sends only what you pass, so send it on every purchase: `"production"` from release builds, `"sandbox"` from the builds you test purchases with. Without it the purchase still counts as revenue, but Linkzly may hold it back from your ad networks. See [Purchase environment](../purchases/purchase-environment.md).
 - A refund reuses the **original** `transactionId`, so it nets out the purchase. Send the refund with the positive amount; the SDK marks it as a refund.
 
 ```kotlin
@@ -63,7 +64,8 @@ LinkzlySDK.trackPurchase(
         "currency" to "USD",
         "transactionId" to "order-12345",
         "productId" to "premium_monthly",
-        "revenueType" to "subscription"
+        "revenueType" to "subscription",
+        "environment" to "production" // "sandbox" in the builds you test purchases with
     ),
     callback = { result -> result.onSuccess { /* tracked */ } }
 )

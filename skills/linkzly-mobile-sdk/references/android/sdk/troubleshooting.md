@@ -15,6 +15,8 @@ Source: https://docs.linkzly.com/docs/sdk-android#troubleshooting
 
 **Push broadcasts not arriving.** `initializePush()` does nothing until a `setNotificationToken` registration has succeeded and stored a topic. Check `hasNotificationToken()`, that Firebase Messaging and `google-services.json` are in your app, and that Google Play Services is on the device.
 
+**Opens not counted.** Check that the app is built with Android SDK 1.0.11 or later, that the notification was sent by Linkzly (its data carries `campaign_id` or `flow_delivery_id`), that analytics consent is not denied, and that automatic capture is not turned off in the manifest. For a notification your app draws itself, call `trackNotificationOpen` from your tap handler with the push's own data, and check a build with `adb logcat -s LinkzlySDK` as described under [Notification opens](../sdk/push-notifications.md).
+
 **Gaming 401 with HMAC enabled.** The signing secret in `GamingOptions` must match the one on your game's Settings tab exactly, and the device clock must be within 5 minutes of UTC.
 
 **Gradle cannot find the SDK.** Check that the JitPack repository is declared in `settings.gradle(.kts)`, the dependency is `com.github.Linkzly:linkzly-android-sdk:1.0.9`, and try `./gradlew --refresh-dependencies`.

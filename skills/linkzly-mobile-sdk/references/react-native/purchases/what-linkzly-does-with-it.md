@@ -5,7 +5,7 @@ Source: https://docs.linkzly.com/docs/sdk-tracking-purchases#what-linkzly-does-w
 
 Revenue is as reported by your app. Linkzly does not check the amount, the currency or the transaction against the store. The `receipt` key is forwarded by the SDK, but Linkzly keeps only a flag that a receipt was present and drops the value, and nothing uses it, so there is no reason to send it.
 
-Once a purchase is recorded, repeated transactions are discarded, the amount is converted to USD, and the install campaign, source, platform and country of the user are attached. Purchases are kept apart from your custom events, so they do not appear in the Analytics event stream.
+Once a purchase is recorded, repeated transactions are discarded, the amount is converted to USD, and the install campaign, source, platform and country of the user are attached. Purchases are kept apart from your custom events, so they do not appear in the Analytics event stream. A purchase whose environment is `sandbox` is kept as a test purchase and left out of the figures (see [Purchase environment](../purchases/purchase-environment.md)).
 
 Purchases are recorded only when Revenue & LTV is enabled for your organisation. Linkzly enables it per organisation; contact Linkzly support to have it enabled. Until it is, a purchase call returns success and nothing is recorded. If purchases you reported do not show up, this is one cause to rule out before you look at your code.
 

@@ -14,4 +14,4 @@ Every row needs the SDK installed and configured with your app's SDK key first. 
 | Ad Networks | [Ad networks](../integrations/ad-networks.md): attributed install events, which come from [Deep links](../integrations/deep-links.md) and [Deferred deep links](../integrations/deferred-deep-links.md). On iOS, [SKAdNetwork and App Tracking Transparency](../integrations/skadnetwork-and-app-tracking-transparency.md) is optional |
 | Revenue & LTV | [Revenue](../integrations/revenue.md) |
 | Gaming Intelligence | [Gaming tracking](../integrations/gaming-tracking.md) |
-| SKAN report (iOS) | Nothing is required from the SDK; the report shows your iOS installs but no SKAdNetwork figures yet. See [SKAdNetwork and App Tracking Transparency](../integrations/skadnetwork-and-app-tracking-transparency.md) |
+| SKAN report (iOS) | Nothing is required from the SDK to receive postbacks: you set an endpoint in `Info.plist` and the App Store ID in the console. A conversion value schema is optional and lets the SDK set values for you. See [SKAdNetwork and App Tracking Transparency](../integrations/skadnetwork-and-app-tracking-transparency.md) |

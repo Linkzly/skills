@@ -27,6 +27,16 @@ There is no ad-network-specific call on any platform. The calls that matter are 
 | Platform | Supported | Notes |
 |---|---|---|
 | iOS | Yes | No dedicated call. The advertising ID needs tracking permission. |
-| Android | Yes | No dedicated call. The advertising ID is collected unless you turn it off. |
-| React Native | Yes | No dedicated call. |
-| Flutter | Yes | No dedicated call. |
+| Android | Yes | No dedicated call. The advertising ID is collected unless you turn it off. Meta Install Referrer is a manifest entry (below). |
+| React Native | Yes | No dedicated call. Meta Install Referrer is the same manifest entry in the app's Android project. |
+| Flutter | Yes | No dedicated call. Meta Install Referrer is the same manifest entry in the app's Android project. |
+
+### Meta Install Referrer (Android)
+
+Separate from the install forwarding above: when a person installs your Android app after seeing or tapping a Meta ad, Meta leaves the app an encrypted note that names the campaign, ad set and ad. Linkzly can read it and show those IDs on the app's Overview, in the **Meta installs** card. It works only for the installs that carry such a note, so it is a part of your Android installs, and it shows IDs, not names, cost or revenue. It does not replace the reporting in Meta Ads Manager, and it is separate from the install event Linkzly can send to Meta.
+
+1. Add your Meta app ID to the app's manifest as a string resource (`com.linkzly.sdk.META_APP_ID`). The steps are in the [Android SDK guide](https://docs.linkzly.com/docs/sdk-android#meta-install-referrer-optional). React Native and Flutter apps add it in their Android project and call nothing new.
+2. In the console, open the app's Settings page and paste your Install Referrer Decryption Key (Meta app dashboard, App settings, Basic, Android) into the **Meta Install Referrer key** card. The key stays in Linkzly, is stored encrypted and is never sent to a device.
+3. Ship an app version with the SDK release that supports it. Look for the **Meta installs** card on the app's Overview once installs from Meta ads arrive.
+
+The SDK does not read the note when advertising tracking is off or consent for advertising data was denied. iOS has no equivalent.

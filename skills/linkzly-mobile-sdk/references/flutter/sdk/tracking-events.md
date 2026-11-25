@@ -36,12 +36,18 @@ final DeepLinkData? open = await Linkzly.instance.trackOpen();
 
 `trackPurchase` and `trackRefund` take one positional map. Send `revenue`, `currency` and `transactionId` in every call. `transactionId` is the dedup key: a repeat of the same id is discarded. A refund reuses the original `transactionId`, so the two net out. `productId`, `productName`, `quantity` and `revenueType` are optional. Both methods return `true` when the event was accepted. Purchases are recorded only when Revenue & LTV is enabled for your organisation. See the [purchases guide](../purchases/overview.md) for the full contract.
 
+On Android, also pass `environment`: `'production'` from release builds, `'sandbox'` from the builds you test purchases with. The sample decides by build type, so a license tester who buys in a release build is sent as `'production'`; if your server checks purchases with Google Play, use its answer instead. On iOS leave it out: the native SDK reads it from the app's receipt. Without it on Android the purchase still counts as revenue, but Linkzly may hold it back from your ad networks. See [Purchase environment](../purchases/purchase-environment.md).
+
 ```dart
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kDebugMode;
+
 final bool purchased = await Linkzly.instance.trackPurchase({
   'revenue': 29.99,
   'currency': 'USD',
   'transactionId': 'order-12345',
   'productId': 'premium_monthly',
+  if (Platform.isAndroid) 'environment': kDebugMode ? 'sandbox' : 'production',
 });
 
 final bool refunded = await Linkzly.instance.trackRefund({

@@ -32,6 +32,7 @@ Paths are relative to this folder.
 | Events: What the SDK sends for you | `ios/events/what-the-sdk-sends-for-you.md` |
 | Events: Sending a custom event | `ios/events/sending-a-custom-event.md` |
 | Events: Naming events | `ios/events/naming-events.md` |
+| Events: Event properties | `ios/events/event-properties.md` |
 | Events: Starter event plans | `ios/events/starter-event-plans.md` |
 | Events: Where event names are used | `ios/events/where-event-names-are-used.md` |
 | Events: Identifying users | `ios/events/identifying-users.md` |
@@ -43,6 +44,7 @@ Paths are relative to this folder.
 | Purchases: Where to call it | `ios/purchases/where-to-call-it.md` |
 | Purchases: Choosing the transaction ID | `ios/purchases/choosing-the-transaction-id.md` |
 | Purchases: Revenue, currency and type | `ios/purchases/revenue-currency-and-type.md` |
+| Purchases: Purchase environment | `ios/purchases/purchase-environment.md` |
 | Purchases: Refunds | `ios/purchases/refunds.md` |
 | Purchases: Avoiding double counting | `ios/purchases/avoiding-double-counting.md` |
 | Purchases: What Linkzly does with it | `ios/purchases/what-linkzly-does-with-it.md` |
@@ -85,6 +87,7 @@ Paths are relative to this folder.
 | Events: What the SDK sends for you | `android/events/what-the-sdk-sends-for-you.md` |
 | Events: Sending a custom event | `android/events/sending-a-custom-event.md` |
 | Events: Naming events | `android/events/naming-events.md` |
+| Events: Event properties | `android/events/event-properties.md` |
 | Events: Starter event plans | `android/events/starter-event-plans.md` |
 | Events: Where event names are used | `android/events/where-event-names-are-used.md` |
 | Events: Identifying users | `android/events/identifying-users.md` |
@@ -96,6 +99,7 @@ Paths are relative to this folder.
 | Purchases: Where to call it | `android/purchases/where-to-call-it.md` |
 | Purchases: Choosing the transaction ID | `android/purchases/choosing-the-transaction-id.md` |
 | Purchases: Revenue, currency and type | `android/purchases/revenue-currency-and-type.md` |
+| Purchases: Purchase environment | `android/purchases/purchase-environment.md` |
 | Purchases: Refunds | `android/purchases/refunds.md` |
 | Purchases: Avoiding double counting | `android/purchases/avoiding-double-counting.md` |
 | Purchases: What Linkzly does with it | `android/purchases/what-linkzly-does-with-it.md` |
@@ -137,6 +141,7 @@ Paths are relative to this folder.
 | Events: What the SDK sends for you | `react-native/events/what-the-sdk-sends-for-you.md` |
 | Events: Sending a custom event | `react-native/events/sending-a-custom-event.md` |
 | Events: Naming events | `react-native/events/naming-events.md` |
+| Events: Event properties | `react-native/events/event-properties.md` |
 | Events: Starter event plans | `react-native/events/starter-event-plans.md` |
 | Events: Where event names are used | `react-native/events/where-event-names-are-used.md` |
 | Events: Identifying users | `react-native/events/identifying-users.md` |
@@ -148,6 +153,7 @@ Paths are relative to this folder.
 | Purchases: Where to call it | `react-native/purchases/where-to-call-it.md` |
 | Purchases: Choosing the transaction ID | `react-native/purchases/choosing-the-transaction-id.md` |
 | Purchases: Revenue, currency and type | `react-native/purchases/revenue-currency-and-type.md` |
+| Purchases: Purchase environment | `react-native/purchases/purchase-environment.md` |
 | Purchases: Refunds | `react-native/purchases/refunds.md` |
 | Purchases: Avoiding double counting | `react-native/purchases/avoiding-double-counting.md` |
 | Purchases: What Linkzly does with it | `react-native/purchases/what-linkzly-does-with-it.md` |
@@ -189,6 +195,7 @@ Paths are relative to this folder.
 | Events: What the SDK sends for you | `flutter/events/what-the-sdk-sends-for-you.md` |
 | Events: Sending a custom event | `flutter/events/sending-a-custom-event.md` |
 | Events: Naming events | `flutter/events/naming-events.md` |
+| Events: Event properties | `flutter/events/event-properties.md` |
 | Events: Starter event plans | `flutter/events/starter-event-plans.md` |
 | Events: Where event names are used | `flutter/events/where-event-names-are-used.md` |
 | Events: Identifying users | `flutter/events/identifying-users.md` |
@@ -200,6 +207,7 @@ Paths are relative to this folder.
 | Purchases: Where to call it | `flutter/purchases/where-to-call-it.md` |
 | Purchases: Choosing the transaction ID | `flutter/purchases/choosing-the-transaction-id.md` |
 | Purchases: Revenue, currency and type | `flutter/purchases/revenue-currency-and-type.md` |
+| Purchases: Purchase environment | `flutter/purchases/purchase-environment.md` |
 | Purchases: Refunds | `flutter/purchases/refunds.md` |
 | Purchases: Avoiding double counting | `flutter/purchases/avoiding-double-counting.md` |
 | Purchases: What Linkzly does with it | `flutter/purchases/what-linkzly-does-with-it.md` |

@@ -42,13 +42,17 @@ Each list runs in the order you do the work: console, app project, code, then ho
 - [ ] Smart Links exist for your campaigns, and the deep link setup is done.
 - [ ] On iOS, tracking permission is requested if you want the advertising ID.
 - [ ] Install from a campaign link, then look for an `install` event in Analytics, Event stream.
+- [ ] Optional, Android with Meta ads: the Meta app ID is in the manifest and the decryption key is saved on the app's Settings page.
 
 ### SKAdNetwork and App Tracking Transparency checklist
 
 - [ ] `NSUserTrackingUsageDescription` is in `Info.plist` (iOS).
 - [ ] `requestTrackingPermission` runs while the app is active, and the prompt appears on a new install.
-- [ ] `updateConversionValue` runs with the values you chose.
+- [ ] The app's **iOS App Store ID** is saved on its Configuration tab in the console.
+- [ ] `NSAdvertisingAttributionReportEndpoint` and `AttributionCopyEndpoint` in `Info.plist` hold the endpoint the SKAN tab shows, and `SKAdNetworkItems` is not added for this.
+- [ ] Either `updateConversionValue` runs with the values you chose, or a conversion value schema is saved for the app, not both.
 - [ ] The conversion value call reports success on a real iOS device.
+- [ ] After a build with the keys is installed from the App Store and Apple has sent postbacks, the SKAN tab shows them. They arrive a day or more after each conversion window closes.
 
 ### Revenue checklist
 

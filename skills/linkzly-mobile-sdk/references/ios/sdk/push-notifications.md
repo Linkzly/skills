@@ -66,3 +66,47 @@ LinkzlySDK.clearNotificationToken()
 A successful `setNotificationToken` registration already subscribes the device to its Linkzly broadcast topic, and the SDK re-subscribes on every launch. `initializePush` and `disablePush` are recovery and session-level controls, and most apps never call them. `initializePush` returns `false` until a registration has succeeded, and also when the SDK is not configured or Firebase Messaging is unavailable. `disablePush` lasts for the session; the next launch subscribes again.
 
 `initializePush()` uses runtime reflection — there is no Firebase dependency in the SDK itself, and it returns `false` safely when Firebase is missing. It works alongside other push providers (OneSignal, Braze, Airship) because it only subscribes to Linkzly-specific topics.
+
+### Notification opens
+
+Linkzly counts a device as having opened a push campaign when its user taps the notification. The campaign page in the Linkzly console shows the number. This needs LinkzlySDK 1.0.9 or later.
+
+**Automatic.** You write no code. The SDK puts a step in front of `userNotificationCenter(_:didReceive:withCompletionHandler:)` on your notification center delegate. It reads the tap, then calls your method as before with the same completion handler. Every tap that goes through that method is covered, including local notifications your app schedules itself, and the tap that launches the app.
+
+- Only notifications sent by Linkzly count. Their data carries `campaign_id`, or `flow_delivery_id` for triggered pushes.
+- Nothing is sent while analytics consent is denied (`setConsent`).
+- A tap that arrives before `configure` is held in memory and sent after it.
+- Your delegate class must already implement the method. The SDK never sets a delegate and never adds the method.
+
+If you call `configure` in `application(_:didFinishLaunchingWithOptions:)`, you need nothing more. If you call `configure` later, for example after the user consents, call `installNotificationOpenCapture()` early. Without it the tap that launches the app is missed.
+
+```swift
+func application(_ application: UIApplication,
+                 willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+    LinkzlySDK.installNotificationOpenCapture()
+    return true
+}
+```
+
+**Explicit call.** Because the delegate path is automatic, you rarely need this on iOS. To report a tap yourself, call `trackNotificationOpen(userInfo:actionIdentifier:)` from your own tap handler, after `configure`:
+
+```swift
+func userNotificationCenter(_ center: UNUserNotificationCenter,
+                            didReceive response: UNNotificationResponse,
+                            withCompletionHandler completionHandler: @escaping () -> Void) {
+    LinkzlySDK.trackNotificationOpen(
+        userInfo: response.notification.request.content.userInfo,
+        actionIdentifier: response.actionIdentifier
+    )
+    completionHandler()
+}
+```
+
+A tap that reaches the SDK twice within 5 seconds, once automatically and once through this call, is counted once. A dismissal (`UNNotificationDismissActionIdentifier`) is not reported. Called before `configure`, the call does nothing.
+
+**Turning automatic capture off.** Add the Boolean `LinkzlyAutoTrackNotificationOpens` with the value `NO` to `Info.plist`. The explicit call still works.
+
+```xml
+<key>LinkzlyAutoTrackNotificationOpens</key>
+<false/>
+```

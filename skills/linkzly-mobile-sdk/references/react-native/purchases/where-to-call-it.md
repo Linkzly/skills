@@ -31,7 +31,9 @@ export function guidePurchasesListener() {
         transactionId,
         productId: purchase.productId,
         quantity: purchase.quantity,
-        revenueType: 'iap'
+        revenueType: 'iap',
+        // Android only: on iOS the SDK reads the environment from the receipt.
+        ...(Platform.OS === 'android' ? { environment: __DEV__ ? 'sandbox' : 'production' } : {})
       }).catch((error) => console.warn('Linkzly purchase not sent', error));
     }
     await finishTransaction({ purchase, isConsumable: false });
@@ -39,7 +41,7 @@ export function guidePurchasesListener() {
 }
 ```
 
-`productsBySku` is filled from the products you fetched with `fetchProducts`. The sample was type-checked against `react-native-iap` 16.7.3's published typings.
+`productsBySku` is filled from the products you fetched with `fetchProducts`. `Platform` comes from `react-native`. The sample was type-checked against `react-native-iap` 16.7.3's published typings.
 
 ### A subscription service or your own server
 

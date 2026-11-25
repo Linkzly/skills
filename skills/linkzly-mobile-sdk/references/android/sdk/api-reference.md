@@ -65,6 +65,9 @@ Every public method of `LinkzlySDK`, plus the `LinkzlySDKDebug` helpers. All are
 | `getNotificationToken()` | Returns the stored token, or `null`. |
 | `hasNotificationToken()` | Tells you whether a token is stored. |
 | `clearNotificationToken()` | Removes the token locally, revokes it on the server and unsubscribes the topic. |
+| `trackNotificationOpen(data, actionId)` | Reports a tap on a Linkzly notification from its data map. `actionId` is optional. |
+| `trackNotificationOpen(intent, actionId)` | Reports a tap from the `Intent` that opened the app. `actionId` is optional. |
+| `handleNotificationIntent(intent)` | Reports a tap that reaches a running activity in `onNewIntent`. |
 
 ### Privacy
 

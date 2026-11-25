@@ -31,6 +31,9 @@ StreamSubscription<List<PurchaseDetails>> guidePurchasesListener() {
               'transactionId': transactionId,
               'productId': purchase.productID,
               'revenueType': 'iap',
+              // Android only: on iOS the SDK reads the environment from the receipt.
+              if (Platform.isAndroid)
+                'environment': kDebugMode ? 'sandbox' : 'production',
             }).catchError((Object error) => false),
           );
         }
@@ -43,7 +46,7 @@ StreamSubscription<List<PurchaseDetails>> guidePurchasesListener() {
 }
 ```
 
-`productsById` is filled from the result of `queryProductDetails`.
+`productsById` is filled from the result of `queryProductDetails`. `Platform` comes from `dart:io` and `kDebugMode` from `package:flutter/foundation.dart`.
 
 ### A subscription service or your own server
 

@@ -11,6 +11,8 @@ LinkzlySDK.trackEvent("signup_completed", parameters: ["method": "email"])
 
 // Purchase — revenue, currency, and transactionId are required.
 // transactionId is the dedup key: a repeat of the same id is discarded.
+// Leave out "environment": the SDK reads it from the app's receipt (production for an
+// App Store build, sandbox for TestFlight, Xcode and sandbox testing).
 LinkzlySDK.trackPurchase(parameters: [
     "revenue": 29.99,
     "currency": "USD",

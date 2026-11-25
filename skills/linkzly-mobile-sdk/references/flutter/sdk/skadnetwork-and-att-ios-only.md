@@ -14,9 +14,18 @@ final String? attStatus = await Linkzly.instance.getAttStatus();
 
 await Linkzly.instance.updateConversionValue(42); // 0-63
 
+// iOS 16.1 or later: a coarse value ('low', 'medium' or 'high'),
+// and optionally lock the postback window
+await Linkzly.instance.updateConversionValue(42, coarseValue: 'high');
+await Linkzly.instance.updateConversionValue(42, coarseValue: 'medium', lockWindow: true);
+
 await Linkzly.instance.setAdvertisingTrackingEnabled(false);
 final bool adEnabled = await Linkzly.instance.isAdvertisingTrackingEnabled();
 ```
+
+`coarseValue` takes `'low'`, `'medium'` or `'high'`; any other word, or an iOS earlier than 16.1, sends the fine value alone. `lockWindow` locks the postback window and is ignored without a valid `coarseValue`.
+
+Conversion values can also come from a conversion value schema you save for the app in the console. The iOS SDK under the plugin reads it and sets the values by itself, so your code needs no call. Use either your own `updateConversionValue` calls or a schema, not both.
 
 `NSUserTrackingUsageDescription` has to be in `Info.plist` (see [Platform Setup](../sdk/platform-setup.md)) before the first `requestTrackingPermission` call: the app crashes if the call runs without it. IDFA is only collected after the user grants ATT.
 

@@ -31,7 +31,8 @@ val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchas
                     "transactionId" to orderId,
                     "productId" to productId,
                     "quantity" to purchase.quantity,
-                    "revenueType" to "iap"
+                    "revenueType" to "iap",
+                    "environment" to "production" // "sandbox" in the builds you test purchases with
                 )
             )
         }
@@ -46,7 +47,7 @@ val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchas
 }
 ```
 
-`productsById` holds the `ProductDetails` you fetched with `queryProductDetails`. The sample reads the one-time price. For a subscription, read the price from the offer that the user bought; that variant of the sample was not compiled or tested.
+`productsById` holds the `ProductDetails` you fetched with `queryProductDetails`. The sample reads the one-time price. For a subscription, read the price from the offer that the user bought; that variant of the sample was not compiled or tested. The sample sends `environment` as `production`; send `sandbox` from the builds you test purchases with (see [Purchase environment](../purchases/purchase-environment.md)).
 
 ### A subscription service or your own server
 

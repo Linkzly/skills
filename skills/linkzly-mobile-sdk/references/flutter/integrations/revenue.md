@@ -18,7 +18,7 @@ Nothing beyond the SDK. The fields, the transaction ID to use, refunds and doubl
 
 ### SDK calls
 
-`revenue`, `currency` and `transactionId` are required.
+`revenue`, `currency` and `transactionId` are required. For a purchase made on Android (from Kotlin, React Native or Flutter), also send `environment` (`production` or `sandbox`); on iOS the SDK reads it from the app's receipt. An Android purchase without it may be held back from your ad networks. The samples below show the required fields only; [Purchase environment](../purchases/purchase-environment.md) shows how to add `environment` in each language.
 
 #### Flutter
 

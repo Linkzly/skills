@@ -14,8 +14,17 @@ if (Platform.OS === 'ios') {
     const attStatus = await LinkzlySDK.getATTStatus();
 
     await LinkzlySDK.updateConversionValue(42);  // 0-63
+
+    // iOS 16.1 or later: add a coarse value ('low' | 'medium' | 'high'),
+    // and optionally lock the postback window
+    await LinkzlySDK.updateConversionValue(42, 'high');
+    await LinkzlySDK.updateConversionValue(42, 'medium', true);
 }
 ```
+
+`coarseValue` takes `'low'`, `'medium'` or `'high'`; any other word is ignored and only the fine value is sent, as it is on an iOS earlier than 16.1. `lockWindow` locks the postback window and needs a valid `coarseValue`; without one it is ignored. The call resolves to `false` on Android.
+
+Conversion values can also come from a conversion value schema you save for the app in the console. The iOS SDK under the wrapper reads it and sets the values by itself, so your code needs no call. Use either your own `updateConversionValue` calls or a schema, not both. To have Linkzly receive and report Apple's postbacks, add the endpoint the console's SKAN tab shows to `Info.plist` (in an Expo app, `ios.infoPlist` in the app config) as the value of both `NSAdvertisingAttributionReportEndpoint` (SKAdNetwork) and `AttributionCopyEndpoint` (AdAttributionKit), and save the app's App Store ID in the console. Do not add `SKAdNetworkItems` for this: that key is for apps that show ads. The steps are on [Integrations and Setup](../integrations/skadnetwork-and-app-tracking-transparency.md).
 
 `NSUserTrackingUsageDescription` has to be in `Info.plist` (see [Platform Setup](../sdk/platform-setup.md)) before the first `requestTrackingPermission` call: the app crashes if the call runs without it. IDFA is only collected after the user grants ATT.
 

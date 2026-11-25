@@ -14,6 +14,7 @@ Both calls take one set of fields. Send these keys; the SDK moves them into a re
 | `productName` | No | String | A readable product name. `product_name` is accepted as well. |
 | `quantity` | No | Number | Units bought. Stored as sent, default 1. |
 | `revenueType` | No | `iap`, `subscription` or `other` | Default `iap`. `revenue_type` is accepted as well. |
+| `environment` | No on iOS; send it on Android | `production` or `sandbox` | Whether the purchase was real or a test. On iOS leave it out: the SDK reads it from the app's receipt. On Android the SDK sends only what you pass. See [Purchase environment](../purchases/purchase-environment.md). |
 | `receipt` | No | String | Not used. Leave it out (see [What Linkzly does with it](../purchases/what-linkzly-does-with-it.md)). |
 
 Any other key you pass stays on the event as ordinary custom data.

@@ -7,7 +7,7 @@ These tables are suggestions for four common kinds of app. Pick the rows that ma
 
 ### Commerce
 
-| Event | When to send | Useful parameters |
+| Event | When to send | Useful event properties |
 |---|---|---|
 | `product_viewed` | The product detail screen appears | `product_id`, `category` |
 | `search_performed` | The user submits a search | `query_length`, `result_count` |
@@ -21,7 +21,7 @@ Send the order itself with `trackPurchase`. Register these names in the app's Cu
 
 ### Subscription
 
-| Event | When to send | Useful parameters |
+| Event | When to send | Useful event properties |
 |---|---|---|
 | `signup_completed` | An account is created | `method` |
 | `onboarding_completed` | The user finishes the first-run flow | `steps_completed` |
@@ -35,7 +35,7 @@ Send each paid start or renewal with `trackPurchase` and `revenueType` set to `s
 
 ### Content and media
 
-| Event | When to send | Useful parameters |
+| Event | When to send | Useful event properties |
 |---|---|---|
 | `signup_completed` | An account is created | `method` |
 | `content_viewed` | An article, video or episode opens | `content_id`, `content_type` |
@@ -49,7 +49,7 @@ Send any paid purchase with `trackPurchase`. Register these names in the app's C
 
 ### Games
 
-| Event | When to send | Useful parameters |
+| Event | When to send | Useful event properties |
 |---|---|---|
 | `tutorial_started` | The tutorial begins | `variant` |
 | `tutorial_completed` | The tutorial ends | `duration_seconds` |

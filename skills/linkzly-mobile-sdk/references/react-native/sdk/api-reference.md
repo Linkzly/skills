@@ -68,7 +68,7 @@ Platform column: `iOS + Android` means the call reaches both native SDKs.
 | `getIDFA` | iOS only | Returns the IDFA, or `null` (also `null` on Android). |
 | `setAdvertisingTrackingEnabled` | iOS + Android | Turns advertising-ID collection on or off. |
 | `isAdvertisingTrackingEnabled` | iOS + Android | Returns whether advertising-ID collection is on. |
-| `updateConversionValue` | iOS only | Updates the SKAdNetwork conversion value (0 to 63); resolves to `false` on Android. |
+| `updateConversionValue` | iOS only | Updates the SKAdNetwork conversion value (0 to 63). Optional `coarseValue` (`'low'`, `'medium'` or `'high'`, iOS 16.1 and later) and `lockWindow` (needs a valid `coarseValue`). Resolves to `false` on Android. |
 
 ### Push
 
@@ -80,6 +80,7 @@ Platform column: `iOS + Android` means the call reaches both native SDKs.
 | `getNotificationToken` | iOS + Android | Returns the stored token, or `null`. |
 | `hasNotificationToken` | iOS + Android | Returns whether a token is stored. |
 | `clearNotificationToken` | iOS + Android | Clears the token and revokes it server-side (durable opt-out). |
+| `trackNotificationOpen` | iOS + Android | Reports a tap on a Linkzly notification from its `data` and an optional action id. Never rejects. |
 
 ### Privacy
 

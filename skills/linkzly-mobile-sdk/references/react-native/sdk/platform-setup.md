@@ -70,6 +70,18 @@ class MainActivity : ReactActivity() {
 
 Add the intent filters (custom URL scheme + App Links with `android:autoVerify="true"`) and `android:launchMode="singleTask"` to `MainActivity` in `AndroidManifest.xml`. See the [Android SDK guide](https://docs.linkzly.com/docs/sdk-android) for the exact manifest snippet.
 
+### Android — Meta Install Referrer (optional)
+
+To see which Meta ad campaign, ad set and ad an Android install came from, add your Meta app ID to `android/app/src/main/AndroidManifest.xml`, inside `<application>`, as a string resource. This is a manifest step only: there is no new call in JavaScript.
+
+```xml
+<meta-data
+    android:name="com.linkzly.sdk.META_APP_ID"
+    android:value="@string/linkzly_meta_app_id" />
+```
+
+Define `linkzly_meta_app_id` in `android/app/src/main/res/values/strings.xml`. Write it as a string resource, not a number straight in `android:value`: the SDK refuses a number. It needs a version of this package that depends on the Android SDK release with Meta Install Referrer; older versions ignore the entry. The details, what the SDK reads and how to save your decryption key in the console are in the [Android SDK guide](https://docs.linkzly.com/docs/sdk-android).
+
 ### Expo — generated native folders (prebuild)
 
 In an Expo app that uses prebuild, `ios/` and `android/` are generated from the app config (`app.json` or `app.config.*`) and its config plugins, and `expo prebuild --clean` deletes them and writes them again. You can tell from the project: it depends on `expo`, and `ios/` and `android/` are missing or listed in `.gitignore`, or its scripts run `expo prebuild`.
@@ -87,6 +99,7 @@ In such an app nothing written by hand in `ios/` or `android/` lasts, so every n
 | App Links intent filter | `android.intentFilters` in the app config, with `autoVerify: true` |
 | `android:launchMode="singleTask"` | Nothing to add: the Expo template already sets it |
 | The Android dependency | Nothing to add, as in [Installation](../sdk/installation.md) |
+| The Meta app ID for Meta Install Referrer | A config plugin, with `withAndroidManifest` for the `meta-data` entry and `withStringsXml` for the string |
 
 This plugin does the first three rows. Save it as `plugins/with-linkzly.cjs` and add `"./plugins/with-linkzly.cjs"` to `plugins` in the app config:
 

@@ -13,4 +13,6 @@ Source: https://docs.linkzly.com/docs/sdk-ios#troubleshooting
 
 **Broadcasts resume after `disablePush()`.** `disablePush()` lasts for the session only. Use `clearNotificationToken()` for a durable opt-out.
 
+**Opens not counted.** Check that the app is built with LinkzlySDK 1.0.9 or later, that the notification was sent by Linkzly (its data carries `campaign_id` or `flow_delivery_id`), that analytics consent is not denied, and that `LinkzlyAutoTrackNotificationOpens` is not `NO`. Your notification center delegate must implement `userNotificationCenter(_:didReceive:withCompletionHandler:)`. If you configure the SDK late, call `installNotificationOpenCapture()` early.
+
 **Gaming 401 with HMAC enabled.** The `signingSecret` in `LinkzlyGamingOptions` must match the one on your game's Settings tab exactly, and the device clock must be within 5 minutes of UTC.

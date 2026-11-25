@@ -3,7 +3,7 @@
 
 Source: https://docs.linkzly.com/docs/sdk-tracking-events#sending-a-custom-event
 
-`trackEvent` takes a name and an optional set of parameters. The SDK sends it as an event of type `custom`: the name travels as the event name and the parameters travel as the event's custom data.
+`trackEvent` takes a name and an optional set of event properties. The SDK sends it as an event of type `custom`: the name travels as the event name, and the event properties travel with it. Which values you can send, and how each one arrives, is in [Event properties](../events/event-properties.md).
 
 ### Flutter
 
@@ -27,6 +27,9 @@ Other things to know about both calls:
 - Call them after `configure` has succeeded. Before that, the SDK logs a warning and the event is not queued.
 - If you turned tracking off with `setTrackingEnabled(false)`, `trackEvent` does nothing (the install and open events the SDK sends itself are not affected).
 - Under the default batching strategy a custom event waits in a queue on the device and is sent with others (see [Batching and flushing](../events/batching-and-flushing.md)).
+- Neither call throws because of an event property, from the SDK versions in [SDK versions](../events/event-properties.md). A value that can't be sent is left out, and the event is sent with its other event properties (see [Values that are left out](../events/event-properties.md)).
+- On Android, `trackEventBatch` takes each event's properties from `customData`, or from `parameters` when there is no `customData`. Android versions before {{SDK_VERSION_ANDROID}} read only `customData` and sent an event without its properties otherwise, so the example above uses `customData`.
+- On React Native, `trackEventBatch` on Android sent every event without its event properties before {{SDK_VERSION_REACT_NATIVE}}. Upgrade before you rely on it in an Android app.
 
 The full call reference for each platform is in its Tracking Events section: [iOS](https://docs.linkzly.com/docs/sdk-ios#tracking-events), [Android](https://docs.linkzly.com/docs/sdk-android#tracking-events), [React Native](https://docs.linkzly.com/docs/sdk-react-native#tracking-events), [Flutter](../sdk/tracking-events.md).
 
@@ -37,6 +40,7 @@ The event ingestion service keeps a custom event only if its name is in the Cust
 - On the batch path, which is the default for custom events and the path `trackEventBatch` uses, the response is a success even when events were dropped. A successful flush does not mean the events were kept, and nothing in your app reports the loss.
 - On the single-event path, used when instant sending is selected, an unregistered name returns a 400 error.
 - If the registry lookup itself fails, the event is treated as unregistered and dropped.
+- A name longer than 255 characters, or a custom event with no name, is refused in the same way: a 400 error on the single-event path, and on the batch path only that event is dropped while the rest of the batch is kept.
 
 To register a name in the console:
 
@@ -50,5 +54,6 @@ To register a name in the console:
 The same Custom Events block is on the form where you first register an app, and the same rule applies: the names are saved with the form.
 
 - Matching is exact and case-sensitive. `Signup_Completed` and `signup_completed` are different names. The console trims spaces around the name you type, so do not put spaces at the start or end of a name in code.
-- A name can be at most 100 characters.
-- A name you have just added can take a few minutes to be accepted.
+- A name can be at most 255 characters.
+- Names that start with `__` (two underscores) are reserved for Linkzly (see [Reserved names](../events/event-properties.md)).
+- A name you have just saved can take up to a few minutes to be accepted. Events sent with it before then are dropped as unregistered, not held for later, so save the name before you release the app version that sends it.

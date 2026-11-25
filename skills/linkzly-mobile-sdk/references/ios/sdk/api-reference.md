@@ -80,7 +80,7 @@ All methods are static methods on `LinkzlySDK` (module `Linkzly`) unless the gro
 | `getIDFA()` | Returns the advertising identifier, or `nil` when not authorized. |
 | `setAdvertisingTrackingEnabled(_:)` | Turns IDFA collection on or off inside your app. |
 | `isAdvertisingTrackingEnabled()` | Returns whether IDFA collection is on. |
-| `updateConversionValue(_:)` | Updates the SKAdNetwork conversion value on the device. Five forms: fine value; fine value with completion; with coarse value; with coarse value and completion; with coarse value, `lockWindow` and completion. The coarse forms need iOS 16.1. |
+| `updateConversionValue(_:)` | Updates the SKAdNetwork conversion value on the device. Five forms: fine value; fine value with completion; with coarse value; with coarse value and completion; with coarse value, `lockWindow` and completion. The coarse forms need iOS 16.1. Conversion values from a saved schema need no call: see [Conversion values](../sdk/skadnetwork-and-att.md). |
 
 ### Push
 
@@ -92,6 +92,8 @@ All methods are static methods on `LinkzlySDK` (module `Linkzly`) unless the gro
 | `getNotificationToken()` | Returns the stored push token, or `nil`. |
 | `hasNotificationToken()` | Returns `true` when a token is stored. |
 | `clearNotificationToken()` | Removes the token on the device and revokes it with Linkzly. |
+| `trackNotificationOpen(userInfo:actionIdentifier:)` | Reports a tap on a Linkzly notification. Taps are also reported automatically. |
+| `installNotificationOpenCapture()` | Starts automatic capture of taps. `configure` calls it; call it early only when you configure late. |
 
 ### Privacy
 

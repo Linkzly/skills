@@ -26,7 +26,7 @@ Add to `ios/Runner/Info.plist`:
 
 Replace the example `NSUserTrackingUsageDescription` text with your own. The permission prompt shows it to the person, so keep it short and specific; iOS adds your app's name itself.
 
-If you call `updateConversionValue(...)` for SKAdNetwork, also add `SKAdNetworkItems` with the ad-network identifiers your app uses.
+To have Linkzly receive and report the postbacks Apple sends for your app, add the endpoint the console's SKAN tab shows to `Info.plist` as the value of both `NSAdvertisingAttributionReportEndpoint` (SKAdNetwork) and `AttributionCopyEndpoint` (AdAttributionKit), and save the app's App Store ID in the console. Do not add `SKAdNetworkItems` for this or for `updateConversionValue(...)`: that key is for apps that show other companies' ads, not for an app that is advertised. See [Integrations and Setup](../integrations/skadnetwork-and-app-tracking-transparency.md).
 
 ### iOS — Associated Domains entitlement (Universal Links)
 
@@ -80,3 +80,15 @@ Add Linkzly deep-link intent filters **inside the existing Flutter launcher acti
 ```
 
 Replace `example` with your URI scheme and `example.linkzly.com` with the verified Linkzly domain configured in the console. App Links require a valid Digital Asset Links file — Linkzly hosts this for you under Hosted Verification.
+
+### Android — Meta Install Referrer (optional)
+
+To see which Meta ad campaign, ad set and ad an Android install came from, add your Meta app ID to `android/app/src/main/AndroidManifest.xml`, inside `<application>`, as a string resource. This is a manifest step only: there is no new call in Dart.
+
+```xml
+<meta-data
+    android:name="com.linkzly.sdk.META_APP_ID"
+    android:value="@string/linkzly_meta_app_id" />
+```
+
+Define `linkzly_meta_app_id` in `android/app/src/main/res/values/strings.xml`. Write it as a string resource, not a number straight in `android:value`: the SDK refuses a number. It needs a version of this package that depends on the Android SDK release with Meta Install Referrer; older versions ignore the entry. The details, what the SDK reads and how to save your decryption key in the console are in the [Android SDK guide](https://docs.linkzly.com/docs/sdk-android).
